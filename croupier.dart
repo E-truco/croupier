@@ -26,6 +26,12 @@ List croupier(List<Player> players, int cardsPerPlayer, List<Card> deck){
   // currentPlayer is a counter for which player should get their card next
   int currentPlayer = 0;
 
+  // test for future error
+  if(totalCards > deck.length){
+    var decksNeeded = (deck.length / (totalCards - deck.length)).ceil();
+    throw FormatException("There aren't enough cards on the deck. You need $decksNeeded more decks.");
+  }
+
   for(int i = 0; i < totalCards; i++){
 
     // give currentPlayer the first card of the deck
